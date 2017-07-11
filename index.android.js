@@ -9,19 +9,36 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
 } from 'react-native';
 
 export default class simpleApp extends Component {
+
+  constructor(props){
+    super(props)
+    this.state = {
+      text : 'My First Screen'
+    }
+  }
+
+  handleText =(text) => {
+   this.setState({
+    text : 'Button Clicked'
+   })
+  }
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          React Native simpleApp!
         </Text>
         <Text style={styles.instructions}>
-          My First Screen
+          {this.state.text}
         </Text>
+        <View style={styles.btn}>
+          <Button title="Next" color='green' onPress={this.handleText}/>
+        </View> 
       </View>
     );
   }
@@ -34,15 +51,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  btn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop : 20,
   },
   instructions: {
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+    marginTop : 20,
+
   },
 });
 
